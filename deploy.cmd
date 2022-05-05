@@ -6,9 +6,6 @@ IF "%SITE_ROLE%" == "bot" (
  
 ) ELSE (
  
-  IF "%SITE_ROLE%" == "function" (
- 
     deploy.function.cmd
- 
-  )
+
 )
