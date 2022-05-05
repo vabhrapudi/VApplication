@@ -1,0 +1,54 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.5",
+  "version": "3.3.1",
+  "id": "78d73ca4-d53d-4715-9e3d-6339cafd75fc",
+  "packageName": "com.nps.teams.athena-admin",
+  "developer": {
+    "name": "NPS Foundation",
+    "websiteUrl": "http://npsfoundation.org",
+    "privacyUrl": "http://npsfoundation.org",
+    "termsOfUseUrl": "http://npsfoundation.org"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Athena admin team",
+    "full": "Athena admin team"
+  },
+  "description": {
+    "short": "This app is made for Athena admin team.",
+    "full": "This app is made for Athena admin team."
+  },
+  "accentColor": "#ACCEEF",
+  "bots": [
+    {
+      "botId": "5967cf32-1ccb-4437-8df3-92d536e2d458",
+      "scopes": [ "team" ],
+      "commandLists": [
+      ],
+      "supportsFiles": false,
+      "isNotificationOnly": false
+    }
+  ],
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://npsathenademo.azurewebsites.net/admin-team-tab-configuration",
+      "canUpdateConfiguration": true,
+      "scopes": [ "team" ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "npsathenademo.azurewebsites.net"
+  ],
+  "webApplicationInfo": {
+    "id": "5967cf32-1ccb-4437-8df3-92d536e2d458",
+    "resource": "api://npsathenademo.azurewebsites.net/5967cf32-1ccb-4437-8df3-92d536e2d458"
+  }
+}

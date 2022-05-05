@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.5",
+  "version": "3.3.2",
+  "id": "48c8f65a-1c35-42e2-b4f6-1d093947ae77",
+  "packageName": "com.nps.teams.athena-user",
+  "developer": {
+    "name": "NPS Foundation",
+    "websiteUrl": "https://www.npsfoundation.org/Athena",
+    "privacyUrl": "https://www.npsfoundation.org",
+    "termsOfUseUrl": "https://www.npsfoundation.org"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Athena",
+    "full": "Athena"
+  },
+  "description": {
+    "short": "Athena provides Wisdom for Warfighters!",
+    "full": "Athena provides Wisdom for Warfighters!"
+  },
+  "accentColor": "#ACCEEF",
+  "bots": [
+    {
+      "botId": "5967cf32-1ccb-4437-8df3-92d536e2d458",
+      "scopes": [ "personal" ],
+      "commandLists": [
+      ],
+      "supportsFiles": false,
+      "isNotificationOnly": true
+    }
+  ],
+  "staticTabs": [
+    {
+      "entityId": "UserEntity",
+      "name": "User settings",
+      "contentUrl": "https://npsathenademo.azurewebsites.net/",
+      "websiteUrl": "https://npsathenademo.azurewebsites.net/",
+      "scopes": [ "personal" ]
+    },
+    {
+      "entityId": "RequestEntity",
+      "name": "Requests",
+      "contentUrl": "https://npsathenademo.azurewebsites.net/my-requests",
+      "websiteUrl": "https://npsathenademo.azurewebsites.net/my-requests",
+      "scopes": [ "personal" ]
+    },
+    {
+      "entityId": "CollectionEntity",
+      "name": "My Collection",
+      "contentUrl": "https://npsathenademo.azurewebsites.net/collection-home",
+      "websiteUrl": "https://npsathenademo.azurewebsites.net/collection-home",
+      "scopes": [ "personal" ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "npsathenademo.azurewebsites.net"
+  ],
+  "webApplicationInfo": {
+    "id": "5967cf32-1ccb-4437-8df3-92d536e2d458",
+    "resource": "api://npsathenademo.azurewebsites.net/5967cf32-1ccb-4437-8df3-92d536e2d458"
+  }
+}

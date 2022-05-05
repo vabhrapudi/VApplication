@@ -1,0 +1,190 @@
+﻿// <copyright file="site.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// </copyright>
+
+@import "variables.scss";
+
+.page-heading {
+    font-family: 'Segoe UI';
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2.4rem;
+    padding-top: 1rem;
+}
+
+.page-content {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    width: 100% !important;
+    height: 84vh !important;
+}
+
+.button-footer {
+    position: absolute;
+    width: 98%;
+    bottom: 1rem;
+    margin-top: 1rem;
+    font-family: 'Segoe UI';
+    line-height: 1.9rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding-right:5rem;
+}
+
+.default-container {
+    height: 100vh;
+
+    .container-div & {
+        height: 100vh;
+        width: 100%;
+        background: #F5F5F5;
+    }
+
+    .task-module-container {
+        padding-top: 1rem;
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+        padding-bottom: 2.5rem;
+        width: 100%;
+        height: 100vh;
+        background: #FFFFFF;
+    }
+
+    .user-setting-sub-container {
+        background: #FFFFFF;
+        padding: 3rem;
+        height: 100%;
+    }
+}
+
+.dark-container {
+    height: 100vh;
+
+    .container-div & {
+        height: 100vh;
+        width: 100%;
+        background: #201F1F;
+    }
+
+    .task-module-container {
+        padding-top: 1rem;
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+        padding-bottom: 2.5rem;
+        width: 100%;
+        height: 100vh;
+        background: #292929;
+    }
+
+    .user-setting-sub-container {
+        background: #292929;
+        padding: 3rem;
+        height: 100%;
+    }
+}
+
+.form-dropdown .dz{
+    line-height: inherit !important;
+}
+
+.form-dropdown span {
+    font-weight: normal;
+}
+
+.button-footer {
+    position: absolute !important;
+    width: 89.33% !important;
+    bottom: 3.2rem;
+    font-family: 'Segoe UI';
+    line-height: 1.9rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.high-contrast-container {
+    height: 100vh;
+
+    .container-div & {
+        height: 100vh;
+        width: 100%;
+        background: black;
+    }
+
+    .task-module-container {
+        padding-top: 1rem;
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+        padding-bottom: 2.5rem;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .user-setting-sub-container {
+        background: transparent;
+        padding: 3rem;
+        height: 100%;
+    }
+}
+
+.hidden {
+    visibility: hidden !important;
+}
+
+.visible {
+    visibility: visible !important;
+}
+
+.container-subdiv {
+    max-height: 70vh;
+    overflow-y: auto;
+    width: auto;
+}
+
+.container-subdiv-main {
+    max-height: 70vh;
+    width: auto;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.error-message {
+    text-align: center;
+    width: 80%;
+    height: 10rem;
+    position: absolute;
+    top: 4rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 1.5rem;
+}
+
+.overflow-y {
+    overflow: hidden auto;
+}
+
+.form-fields {
+    overflow-y: auto;
+    height: 77vh;
+}
+
+.task-module-body {
+    overflow-y: auto;
+    height: 100%;
+}
+
+.align-right {
+    margin-left: auto;
+}
+
+.overflow-x {
+    overflow: auto hidden;
+}
+
+.athena-button {
+    color: #FFFFFF !important;
+    background-color: $athena-blue-color !important;
+}

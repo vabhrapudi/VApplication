@@ -1,0 +1,45 @@
+﻿// <copyright file="home.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// </copyright>
+
+@import "../../styles/variables.scss";
+
+.home-tab {
+    max-height: 99%;
+
+    .sections-container {
+        overflow: hidden;
+        padding: 2.6rem 2rem 0;
+
+        .new-to-athena-section {
+            min-height: 18rem;
+            max-height: 18rem;
+
+            .new-to-athena-title {
+                color: $athena-blue-color;
+            }
+
+            .new-to-athena-card-container {
+                overflow: auto hidden;
+            }
+        }
+
+        .your-daily-briefing-section {
+            min-height: 100%;
+            max-height: 100%;
+
+            .your-daily-briefing-title {
+                color: $athena-blue-color;
+            }
+
+            .your-daily-briefing-container {
+                overflow: hidden auto;
+            }
+        }
+    }
+
+    .athena-splash-description {
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+}

@@ -1,0 +1,57 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.2",
+  "body": [
+    {
+      "type": "TextBlock",
+      "wrap": true,
+      "weight": "bolder",
+      "text": "${NewsRequestAdaptiveCardTitle}"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Request from ${CreatedByName}",
+      "wrap": true,
+      "spacing": "None",
+      "$when": "${CreatedByName != null}"
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "${AdaptiveCardTitleLabel}:",
+          "value": "${Title}"
+        },
+        {
+          "title": "${AdaptiveCardDateLabel}:",
+          "value": "${formatDateTime(CreatedOn,'dd/MM/yyyy')}, {{TIME(${string(CreatedOn)})}}"
+        },
+        {
+          "title": "${AdaptiveCardStatusLabel}:",
+          "value": "${Status}"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "**Comment**: ${AdminComment}",
+      "wrap": true,
+      "spacing": "None",
+      "$when": "${AdminComment != null}"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "${AdaptiveCardViewDetailsButtonLabel}",
+      "data": {
+        "msteams": {
+          "type": "task/fetch"
+        },
+        "command": "${Command}",
+        "newsTableId": "${NewsTableId}"
+      }
+    }
+  ]
+}

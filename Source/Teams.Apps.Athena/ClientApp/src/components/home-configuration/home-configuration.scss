@@ -1,0 +1,71 @@
+﻿// <copyright file="home-configuration.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.home-configuaration {
+    overflow-y: hidden;
+
+    .menu-box {
+        box-shadow: 0px 3px 4px 1px rgba(35, 36, 38, 0.15) !important;
+        background-color: transparent !important;
+    }
+
+    .configurations-table {
+        margin-top: 1.4rem;
+        overflow: hidden auto;
+        margin-right: 1.6rem;
+        margin-left: 1.6rem;
+        background-color: transparent !important;
+        height: 80vh;
+
+        .row {
+            cursor: pointer;
+
+            .default-container & {
+                background-color: transparent;
+
+                &:hover {
+                    background-color: #EDEBE9;
+                }
+            }
+
+            .dark-container & {
+                background-color: transparent;
+
+                &:hover {
+                    background-color: #3B3A39;
+                }
+            }
+        }
+
+        .header {
+            cursor: pointer;
+
+            .default-container & {
+                background-color: transparent;
+            }
+
+            .dark-container & {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .search-box input {
+        width: 21rem;
+    }
+
+    .event-bar-configuration {
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        .home-event-bar-form {
+            margin: 0 20rem;
+
+            .task-module-container {
+                height: 65vh;
+            }
+        }
+    }
+}

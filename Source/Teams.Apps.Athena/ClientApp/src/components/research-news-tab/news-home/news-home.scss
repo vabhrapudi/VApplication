@@ -1,0 +1,71 @@
+﻿// <copyright file="news-home.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// </copyright>
+
+.news-article-main-container {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    height: 92vh;
+}
+
+.tab-loader {
+    height: 55vh;
+}
+
+.pagination-scroll-area {
+    overflow-Y: auto;
+    overflow-X: hidden;
+    bottom: 1px;
+}
+
+.no-news-image {
+    width: 10rem;
+    height: 10.4rem !important;
+    margin-top: 8%;
+}
+
+.no-news-message {
+    height: 5rem;
+    width: 34rem;
+    font-family: Segoe UI;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.6rem;
+    text-align: center;
+}
+
+.news-article-container {
+    overflow-y: scroll;
+    max-height: 90%;
+}
+
+.input-search-box {
+    border-radius: 4px;
+    width: 21rem;
+}
+
+.news-text {
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+}
+
+.news-search-box {
+    border-radius: 4px;
+}
+
+.news-search-box div:first-child {
+    width: 21rem;
+}
+
+.news-search-box ul {
+    z-index: 100;
+    width: 31.4rem;
+}
+
+.toolbar-filter-item .ui-pillcontent {
+    width: max-content !important;
+}

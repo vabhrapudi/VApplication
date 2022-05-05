@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teams.Apps.Athena", "Teams.Apps.Athena\Teams.Apps.Athena.csproj", "{D9083A27-B577-48ED-96A4-CC614A8524FE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teams.Apps.Athena.Common", "Teams.Apps.Athena.Common\Teams.Apps.Athena.Common.csproj", "{5351432D-8933-4AF7-8867-CF9322CB591A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teams.Apps.Athena.AthenaFunction", "Teams.Apps.Athena.Function\Teams.Apps.Athena.AthenaFunction.csproj", "{E01FFC76-DECC-4419-92FA-8DD2713D3575}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teams.Apps.Athena.AzureFunctions", "Teams.Apps.Athena.NewsAzureFunctions\Teams.Apps.Athena.AzureFunctions.csproj", "{4C56356D-0CFD-4D28-8980-77998B729B6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9083A27-B577-48ED-96A4-CC614A8524FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9083A27-B577-48ED-96A4-CC614A8524FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9083A27-B577-48ED-96A4-CC614A8524FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9083A27-B577-48ED-96A4-CC614A8524FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5351432D-8933-4AF7-8867-CF9322CB591A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5351432D-8933-4AF7-8867-CF9322CB591A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5351432D-8933-4AF7-8867-CF9322CB591A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5351432D-8933-4AF7-8867-CF9322CB591A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E01FFC76-DECC-4419-92FA-8DD2713D3575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E01FFC76-DECC-4419-92FA-8DD2713D3575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E01FFC76-DECC-4419-92FA-8DD2713D3575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E01FFC76-DECC-4419-92FA-8DD2713D3575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C56356D-0CFD-4D28-8980-77998B729B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C56356D-0CFD-4D28-8980-77998B729B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C56356D-0CFD-4D28-8980-77998B729B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C56356D-0CFD-4D28-8980-77998B729B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3B4A964-5F64-4984-929E-F5DA479711B2}
+	EndGlobalSection
+EndGlobal

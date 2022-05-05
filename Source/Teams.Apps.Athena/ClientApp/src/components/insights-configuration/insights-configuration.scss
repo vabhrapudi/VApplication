@@ -1,0 +1,57 @@
+﻿// <copyright file="insights-configuration.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.insights-configuaration {
+    max-height: 99%;
+
+    .menu-box {
+        box-shadow: 0px 3px 4px 1px rgba(35, 36, 38, 0.15) !important;
+        background-color: transparent !important;
+    }
+
+    .search-box input {
+        width: 21rem;
+    }
+
+    .insights-configuration-table {
+        background-color: transparent !important;
+        margin-top: 1.4rem;
+        margin-right: 1.6rem;
+        margin-left: 1.6rem;
+        overflow: hidden auto;
+
+        .header {
+            cursor: pointer;
+
+            .default-container & {
+                background-color: transparent;
+            }
+
+            .dark-container & {
+                background-color: transparent;
+            }
+        }
+
+        .row {
+            cursor: pointer;
+
+            .default-container & {
+                background-color: transparent;
+
+                &:hover {
+                    background-color: #EDEBE9;
+                }
+            }
+
+            .dark-container & {
+                background-color: transparent;
+
+                &:hover {
+                    background-color: #3B3A39;
+                }
+            }
+        }
+    }
+}

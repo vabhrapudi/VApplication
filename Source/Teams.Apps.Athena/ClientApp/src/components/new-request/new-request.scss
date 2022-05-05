@@ -1,0 +1,20 @@
+﻿// <copyright file="new-request.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.new-request {
+    padding-top: 2rem !important;
+
+    .request-description {
+        height: 8.6rem;
+    }
+
+    .requestDetails-key-column-width {
+        min-width: 35%;
+    }
+
+    .word-wrap {
+        word-break: break-all;
+    }
+}

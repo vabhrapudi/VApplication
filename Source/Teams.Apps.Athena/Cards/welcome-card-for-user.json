@@ -1,0 +1,39 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.2",
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "TextBlock",
+      "size": "Large",
+      "weight": "Bolder",
+      "text": "${WelcomeCardTitle}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${WelcomeCardContentLine1}",
+      "wrap": true,
+      "size": "Medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "\r- ${WelcomeCardContentPoint1} \r- ${WelcomeCardContentPoint2} \r- ${WelcomeCardContentPoint3}",
+      "wrap": true,
+      "size": "Medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "${WelcomeCardContentLine2}",
+      "wrap": true,
+      "size": "Medium"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "${SettingsButtonText}",
+      "url": "${SettingsButtonUrl}"
+    }
+  ]
+}

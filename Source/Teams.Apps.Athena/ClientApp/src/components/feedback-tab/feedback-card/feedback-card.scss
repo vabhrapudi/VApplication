@@ -1,0 +1,22 @@
+﻿// <copyright file="feedback-card.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.feedback-card {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 3px !important;
+    margin-bottom: 1.5rem !important;
+    margin-right: 0.5rem !important;
+    padding-bottom: 0rem !important;
+}
+
+.feedback-details {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical;
+}

@@ -1,0 +1,23 @@
+﻿// <copyright file="card-imege.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// </copyright>
+
+.card-image-placeholder-container {
+    background: #282C35;
+}
+
+.card-image-placeholder-container .card-image-placeholder {
+    padding: 1.3rem;
+}
+
+.card-image-placeholder-container .card-image-placeholder .placeholder-icon {
+    color: white;
+}
+
+.card-image-renderer.image-loaded {
+    display: block;
+}
+
+.card-image-renderer.image-not-loaded {
+    display: none;
+}

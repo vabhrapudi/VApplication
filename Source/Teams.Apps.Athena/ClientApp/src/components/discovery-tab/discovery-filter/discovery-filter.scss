@@ -1,0 +1,56 @@
+﻿// <copyright file="discovery-filter.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.discovery-filter-header {
+    height: 5.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.discovery-filter-item {
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.discovery-filter-container {
+    top: 9rem;
+    z-index: 100;
+    width: 30rem;
+    background: #FFFFFF;
+    position: absolute;
+    box-shadow: 0px 25.6px 57.6px rgba(0, 0, 0, 0.22), 0px 4.8px 14.4px rgba(0, 0, 0, 0.18);
+    border-radius: 2px 2px 0px 0px;
+}
+
+.dark-container {
+    .discovery-filter-container {
+        background: #292929;
+    }
+}
+
+.high-contrast-container {
+    .discovery-filter-container {
+        background: #292929;
+    }
+}
+
+.discovery-filter-footer {
+    height: 6.4rem;
+    padding-right: 2rem;
+}
+
+.discovery-filter-footer button {
+    min-width: 8.6rem !important;
+}
+
+.clear-all-button {
+    border: 0rem !important;
+    padding: 0rem !important;
+}
+
+.discovery-filter-list {
+    height: 28rem;
+    overflow-y: auto;
+}

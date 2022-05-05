@@ -1,0 +1,38 @@
+﻿// <copyright file="research-proposal.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.date-picker-style {
+    max-width: 43vw !important;
+    width: 43vw !important;
+}
+
+.date-picker-style .ms-TextField-fieldGroup {
+    border: none !important;
+    background-color: rgb(243, 242, 241) !important;
+}
+
+.dark-container {
+
+    .date-picker-style .ms-TextField-fieldGroup {
+        border: none !important;
+        background-color: rgb(32, 31, 31) !important;
+    }
+
+    .date-picker-style .ms-TextField-fieldGroup i {
+        color: white;
+    }
+
+    .date-picker-style .ms-TextField-fieldGroup div {
+        color: white;
+    }
+}
+
+.date-picker-style .ms-TextField-fieldGroup div {
+    color: black;
+}
+
+.date-picker-style .full-width {
+    width: 100% !important;
+}

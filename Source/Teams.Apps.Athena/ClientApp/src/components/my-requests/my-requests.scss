@@ -1,0 +1,92 @@
+﻿// <copyright file="my-requests.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.my-requests {
+    overflow-y: hidden;
+
+    .toolbar-box {
+        box-shadow: 0px 3px 4px 1px rgba(35, 36, 38, 0.15) !important;
+        background-color: transparent !important;
+    }
+
+    .menu-container {
+        min-width: 19%;
+        max-width: 19%;
+
+        .default-container &,
+        .dark-container & {
+            background-color: transparent;
+        }
+
+        .menu-items {
+            width: 100%;
+            padding-top: 0;
+            margin-top: 2rem;
+            background-color: transparent;
+        }
+    }
+
+    .menu-details {
+        min-width: 81%;
+    }
+
+    .container {
+        height: 87vh !important;
+
+        .divider {
+            padding-right: 0;
+        }
+
+        .menu-details-status {
+            padding: 1.2rem 0 1.2rem 3.1rem;
+
+            .dark-container & {
+                background: rgb(72, 70, 68);
+                color: rgb(255, 255, 255);
+            }
+        }
+
+        .requests-table {
+            margin-top: 1.4rem;
+            overflow: hidden auto;
+            margin-right: 1.6rem;
+            margin-left: 1.6rem;
+            background-color: transparent !important;
+            height: 80vh;
+
+            .header:hover {
+                background-color: transparent;
+            }
+
+            .header,
+            .row {
+                min-height: 4.4rem;
+                cursor: pointer;
+
+                .default-container &,
+                .dark-container & {
+                    background-color: transparent;
+                }
+            }
+
+            .checkbox-column-header {
+                min-width: 4%;
+                max-width: 4%;
+            }
+
+            .title-column-header {
+                min-width: 32%;
+            }
+
+            .requested-on-column-header {
+                min-width: 18%;
+            }
+
+            .keywords-column-header {
+                min-width: 24%;
+            }
+        }
+    }
+}

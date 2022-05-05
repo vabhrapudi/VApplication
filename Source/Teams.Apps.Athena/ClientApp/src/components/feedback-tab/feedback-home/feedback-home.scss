@@ -1,0 +1,27 @@
+﻿// <copyright file="feedback-home.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.feedback-main-container {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    height: 92vh;
+
+    .pagination-scroll-area {
+        overflow-Y: auto;
+        overflow-X: hidden;
+        bottom: 1px;
+    }
+
+    .feedback-container {
+        overflow-y: scroll;
+        max-height: 86%;
+    }
+
+    .no-feedback-image {
+        width: 10rem;
+        height: 10.4rem !important;
+        margin-top: 14%;
+    }
+}

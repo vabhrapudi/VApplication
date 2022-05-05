@@ -1,0 +1,114 @@
+﻿// <copyright file="athena-ingestion.scss">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT License.
+// </copyright>
+
+.athena-ingestion {
+
+
+    .collections-table-style {
+        background-color: #F9F8F7 !important;
+        padding-left: 2rem;
+        margin-top: 1rem;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+
+        .table-title {
+            cursor: pointer;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1 !important;
+            -webkit-box-orient: vertical;
+            align-content: center;
+            font-weight: bold;
+        }
+    }
+
+    .title {
+        height: 4.4rem;
+        color: #FFFFFF !important;
+        background-color: black;
+        align-content: center;
+    }
+    /*.title {
+        height: 4.4rem;
+        color: #FFFFFF !important;
+        background-color: #002B58;
+        align-content: center;
+    }
+
+    .requests-table {
+        margin-top: 1.4rem;
+        overflow: hidden auto;
+        margin-right: 1.6rem;
+        margin-left: 1.6rem;
+        background-color: transparent !important;
+        height: 100%;
+
+        .header:hover {
+            background-color: transparent;
+        }
+
+        .header {
+            min-height: 4.4rem;
+            background-color: transparent !important;
+            font-weight: bold;
+            align-items: center;
+            align-content: safe center;
+        }
+
+        .row {
+            min-height: 4.4rem;
+            background-color: transparent !important;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+
+            .default-container &,
+            .dark-container & {
+                background-color: transparent;
+            }
+
+            .cell {
+                align-content: center;
+            }
+        }
+
+        .clickable {
+            cursor: pointer;
+        }
+
+        .checkbox-column-header {
+            min-width: 4%;
+            max-width: 4%;
+        }
+
+        .title-column-header {
+            min-width: 37%;
+            text-align: center;
+        }
+
+        .requested-on-column-header {
+            min-width: 18%;
+        }
+
+        .keywords-column-header {
+            min-width: 19%;
+        }
+
+        .coi-header {
+            min-width: 37%;
+            color: black;
+            text-align: center;
+            align-content: center;
+            align-items: center;
+        }
+
+        .text {
+            text-align: center;
+            align-content: center;
+            align-items: center;
+        }
+    }*/
+}

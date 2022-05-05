@@ -1,0 +1,49 @@
+﻿// <copyright file="approve-reject-task-module.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.approve-reject-task-module {
+    .news-image {
+        min-height: 18.6rem;
+        max-height: 18.6rem;
+        width: 100%;
+    }
+
+    .news-request-pill,
+    .news-request-pill:hover {
+        background: #FCF2FA;
+
+        span {
+            color: #943670;
+        }
+    }
+
+    .important-news-request-pill,
+    .important-news-request-pill:hover {
+        background: #FAE4E1;
+
+        span {
+            color: #C71F1C;
+        }
+    }
+
+    .container {
+        overflow: hidden auto;
+        margin-bottom: 1rem;
+    }
+
+    .status-label {
+        padding-bottom: 1.5rem !important;
+        padding-top: 1.5rem !important;
+    }
+
+    .reject-request-reason-textarea textarea {
+        min-height: 21.7rem;
+        max-height: 21.7rem;
+    }
+
+    .mark-as-important-admin-note {
+        margin-bottom: 1.4rem;
+    }
+}

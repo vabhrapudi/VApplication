@@ -1,0 +1,29 @@
+﻿// <copyright file="searchable-dropdown.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.searchable-dropdown {
+    &.fill {
+        ul {
+            width: 90vw;
+            max-height: 45vh;
+            overflow-y: auto;
+        }
+    }
+
+    ul {
+        max-height: 45vh;
+        overflow-y: auto;
+    }
+
+    .icon {
+        cursor: pointer;
+    }
+
+    &.width-220 {
+        input {
+            width: 220px;
+        }
+    }
+}

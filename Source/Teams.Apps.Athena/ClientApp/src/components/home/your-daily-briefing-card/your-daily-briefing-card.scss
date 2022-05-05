@@ -1,0 +1,52 @@
+﻿// <copyright file="your-daily-briefing-card.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// </copyright>
+
+.your-daily-briefing-card {
+    background-color: #FFFFFF !important;
+    cursor: pointer;
+    min-width: 32.7rem !important;
+    height: 13.9rem !important;
+    padding: 1.4rem 1.6rem 0;
+    margin-bottom: 1.5rem !important;
+
+    .dark-container & {
+        background-color: #292828 !important;
+    }
+
+    .high-contrast-container & {
+        background-color: #000000 !important;
+    }
+
+    .header {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &.link:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .description {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .image {
+        width: 3.2rem;
+        max-width: 3.2rem;
+        height: 3.2rem;
+    }
+
+    .date {
+        font-size: 1.2rem;
+    }
+}

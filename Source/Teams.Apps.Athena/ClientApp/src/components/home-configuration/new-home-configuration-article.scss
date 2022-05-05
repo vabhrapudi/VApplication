@@ -1,0 +1,21 @@
+﻿// <copyright file="new-home-configuration-article.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.new-home-configuration-article {
+    .description-editor-wrapper {
+        border: .1rem solid #F1F1F1;
+        height: 20rem;
+
+        .editor-class {
+            height: 14rem;
+            font-size: 1.2rem !important;
+        }
+
+        .rdw-link-modal {
+            left: 0rem;
+            height: 22rem;
+        }
+    }
+}

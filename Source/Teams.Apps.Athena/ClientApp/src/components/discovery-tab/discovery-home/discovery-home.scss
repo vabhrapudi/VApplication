@@ -1,0 +1,209 @@
+﻿// <copyright file="discovery-home.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// Licensed under the MIT license.
+// </copyright>
+
+.discovery-tab {
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+    .discovery-header-container {
+        padding: 1rem 0.5rem 4rem 2rem;
+        background-color: #F5F5F5;
+        height: 4.8rem !important;
+        box-shadow: 0rem 1rem 1rem -0.5rem lightgray;
+        width: 100%;
+
+        .dark-container & {
+            box-shadow: 0rem 1rem 1rem -0.5rem black;
+            background-color: #292929;
+        }
+
+        .high-contrast-container & {
+            box-shadow: none;
+            background-color: #292929;
+            border: 1px solid #F5F5F5;
+        }
+    }
+
+    .toolbar-filter-item .ui-pillcontent {
+        width: max-content !important;
+    }
+
+    .discovery-toolbar {
+        padding: 1rem 0rem 1rem 2rem;
+        box-shadow: 0rem -1rem 1rem -0.5rem lightgrey;
+        position: static;
+        margin-top: 1rem;
+
+        ul {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .dark-container & {
+            box-shadow: 0rem -1rem 1rem -0.5rem black;
+            background-color: #292929;
+        }
+
+        .high-contrast-container & {
+            box-shadow: none;
+            background-color: #292929;
+            border: 1px solid #F5F5F5;
+        }
+    }
+
+    .filter-menu-heading {
+        font-weight: bold;
+    }
+
+    .filter-menu-heading span {
+        width: 18rem;
+    }
+
+    .filter-group-container {
+        background: white;
+
+        .dark-container & {
+            background: #292929;
+        }
+
+        .high-contrast-container & {
+            background: black;
+        }
+    }
+
+    .dx-treelist-header-panel .dx-toolbar {
+        margin-bottom: 0px !important;
+    }
+
+    .discovery-details-pane {
+        max-height: 85vh;
+        width: 25vw;
+        overflow: hidden auto;
+        background: #FAFAFA;
+        box-shadow: 0px 1.2px 3.6px rgba(0, 0, 0, 0.11);
+        z-index: 10;
+        margin-bottom: -1rem;
+    }
+
+    .tree-node-tooltip {
+        height: 20rem;
+        overflow: hidden auto;
+    }
+
+    .filter-checkbox {
+        padding-left: 0rem !important;
+    }
+
+    .filter-sub-menu span:first-of-type {
+        width: 15rem;
+    }
+
+    .filter-menu-item span:first-of-type {
+        padding-right: 4rem;
+    }
+
+    .filter-menu-item-container ul {
+        width: 22rem;
+    }
+
+    .quick-access-menu-container {
+        ul {
+            max-height: 32rem;
+            overflow-y: auto;
+            width: 22rem;
+        }
+
+        span {
+            width: 13.5rem;
+        }
+
+        .quick-access-menu-item-button {
+            min-width: 0px !important;
+            padding-left: 1.5rem !important;
+        }
+    }
+
+    #taxonomy .dx-treelist-header-panel {
+        width: 10rem !important;
+        align-self: flex-end;
+        z-index: 1;
+        top: 10.5rem !important;
+        position: fixed;
+        border-bottom: none !important;
+    }
+
+    #taxonomy .dx-treelist-rowsview td {
+        vertical-align: middle;
+        padding: 0.9rem 2rem !important;
+        cursor: pointer;
+    }
+
+    #taxonomy .dx-treelist-headers td {
+        padding: 1rem 0rem 1rem 2rem !important;
+        background: #F5F5F5;
+        vertical-align: middle;
+
+        .dark-container & {
+            background: #292929;
+        }
+
+        .high-contrast-container & {
+            background: black;
+        }
+    }
+
+    #taxonomy .dx-treelist-text-content {
+        color: #242424;
+
+        .dark-container & {
+            color: #FFFFFF;
+        }
+
+        .high-contrast-container & {
+            color: #FFFFFF;
+        }
+    }
+
+    #taxonomy .ui-text {
+        color: #242424;
+
+        .dark-container & {
+            color: #FFFFFF;
+        }
+
+        .high-contrast-container & {
+            color: #FFFFFF;
+        }
+    }
+
+    #taxonomy .dx-treelist-headers {
+        border-bottom: 0px !important;
+    }
+
+    #taxonomy .dx-visibility-change-handler {
+        background: #F5F5F5;
+
+        .dark-container & {
+            background: #292929;
+        }
+
+        .high-contrast-container & {
+            background: black;
+        }
+    }
+
+    .discovery-search-box {
+        border-radius: 4px;
+    }
+
+    .discovery-search-box div:first-child {
+        width: 21rem;
+    }
+
+    .discovery-search-box ul {
+        z-index: 100;
+        width: 31.4rem;
+    }
+}

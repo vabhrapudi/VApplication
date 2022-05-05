@@ -1,0 +1,26 @@
+﻿.tab-configuration {
+    &.task-module-container {
+        padding: 1rem 0 0 0;
+    }
+
+    .tab-card {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        .default-container & {
+            border: 1px solid #ECEAE8;
+        }
+
+        .dark-container & {
+            border: 1px solid #605E5C;
+        }
+
+        .high-contrast-container & {
+            border: 1px solid #fff;
+        }
+
+        .tab-card-body {
+            margin: 0;
+        }
+    }
+}

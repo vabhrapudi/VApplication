@@ -1,0 +1,35 @@
+﻿// <copyright file="collections-table.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// </copyright>
+
+.icon-pointer {
+    cursor: pointer;
+}
+
+.collections-table-style {
+    background-color: #F9F8F7 !important;
+    padding-left: 2rem;
+    margin-top: 1rem;
+}
+
+.collections-table-style div {
+    background-color: #F9F8F7;
+}
+
+.dark-container {
+    .collections-table-style div {
+        background-color: #292929;
+    }
+
+    .collections-table-style {
+        background-color: #292929 !important;
+    }
+}
+
+.collection-title {
+    cursor: pointer;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical;
+}

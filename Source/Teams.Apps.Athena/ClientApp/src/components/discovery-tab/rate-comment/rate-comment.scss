@@ -1,0 +1,32 @@
+﻿// <copyright file="rate-comment.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// </copyright>
+
+.rate-comment-pane {
+    height: 83vh;
+    width: 25vw;
+    overflow-y: auto;
+    background: #FAFAFA;
+    box-shadow: 0px 1.2px 3.6px rgba(0, 0, 0, 0.11), 0px 6.4px 14.4px rgba(0, 0, 0, 0.13);
+    z-index: 10;
+}
+
+.comments-sub-container {
+    width: 100%;
+}
+
+.comments-container {
+    max-height: 45vh;
+    overflow-y: auto;
+}
+
+.research-rating i {
+    color: #6264A7;
+}
+
+.details-pane-loader {
+    z-index: 2000;
+    background: transparent;
+    margin-left: 11vw;
+    position: fixed;
+}

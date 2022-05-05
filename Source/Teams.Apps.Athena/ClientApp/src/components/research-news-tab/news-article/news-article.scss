@@ -1,0 +1,97 @@
+﻿// <copyright file="news-article.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// </copyright>
+
+.news-card {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 3px !important;
+    height: 13.9rem !important;
+    margin-bottom: 1.5rem !important;
+    margin-right: 0.5rem !important;
+}
+
+.news-header {
+    width: 78vw;
+}
+
+.article-image {
+    width: 16rem !important;
+    height: 10.7rem !important;
+    margin-right: 1rem;
+    border-radius: 0.5rem;
+}
+
+.rating-loader {
+    z-index: 2000;
+    background: transparent;
+    position: fixed;
+    margin-left: 50%;
+}
+
+.news-rating {
+    cursor: pointer;
+}
+
+.news-rating i {
+    color: #6264A7;
+}
+
+.news-rating div {
+    margin-top: -1rem !important;
+}
+
+.important-icon {
+    padding: 0.3rem 0rem 0rem 0.4rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 0.1rem solid;
+    border-radius: 2rem;
+    color: #237B4B;
+    margin-top: -0.5rem !important;
+}
+
+.article-heading {
+    font-family: Segoe UI;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2rem;
+    text-align: left;
+    margin: 0px;
+    cursor: pointer;
+    white-space: nowrap;
+    width: 55vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.article-heading:hover {
+    text-decoration: underline;
+}
+
+.article-description {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical;
+}
+
+.keyword-display {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical;
+}
+
+.keyword-name {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+}

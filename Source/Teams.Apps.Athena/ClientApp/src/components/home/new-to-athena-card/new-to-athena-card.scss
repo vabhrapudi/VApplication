@@ -1,0 +1,54 @@
+﻿// <copyright file="new-to-athena-card.scss" company="NPS Foundation">
+// Copyright (c) NPS Foundation.
+// </copyright>
+
+.new-to-athena-card {
+    background-color: #FFFFFF !important;
+    cursor: pointer;
+    min-width: 49.8rem !important;
+    height: 12.4rem !important;
+    padding: 1.7rem 1.6rem 0;
+    margin-bottom: 1.5rem !important;
+
+    .dark-container & {
+        background-color: #292828 !important;
+    }
+
+    .high-contrast-container & {
+        background-color: #000000 !important;
+    }
+
+    .image {
+        border-radius: .3rem;
+        min-width: 8.6rem;
+        max-width: 8.6rem;
+        height: 8.6rem;
+    }
+
+    .header {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .description {
+        p {
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 1.8rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.new-to-athena-article-tooltip {
+    background: white;
+    color: black;
+}
