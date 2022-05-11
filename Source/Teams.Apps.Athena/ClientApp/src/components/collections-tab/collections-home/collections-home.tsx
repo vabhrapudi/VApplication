@@ -195,7 +195,7 @@ const CollectionsHome: React.FunctionComponent<ICollectionsHomeProps> = (props: 
                 {
                     selectedCollectionName &&
                     <Flex.Item push>
-                        <Text content={selectedCollectionName} weight="bold" className="collections-name-text" />
+                        <Text content={selectedCollectionName} weight="bold" size="large" className="collections-name-text" />
                     </Flex.Item>
                 }
                 {selectedCollectionId === "" ? <Button text content={localize("newCollectionText")} icon={<AddIcon size="medium" />} iconOnly className="icon-pointer" onClick={onNewCollectionBtnClick} /> : null}

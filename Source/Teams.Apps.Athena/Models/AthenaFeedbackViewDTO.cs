@@ -35,5 +35,15 @@ namespace Teams.Apps.Athena.Models
         /// Gets or sets the user details who submitted the feedback.
         /// </summary>
         public UserDetails CreatedBy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the category.
+        /// </summary>
+        public int Category { get; set; }
+
+        /// <summary>
+        /// Gets or sets the feedback type.
+        /// </summary>
+        public int Type { get; set; }
     }
 }

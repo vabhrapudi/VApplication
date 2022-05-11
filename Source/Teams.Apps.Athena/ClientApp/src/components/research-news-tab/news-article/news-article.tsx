@@ -7,7 +7,7 @@ import { Flex, Header, Text, Card, Loader, FlagIcon } from "@fluentui/react-nort
 import { Rating } from '@fluentui/react';
 import { IResearchNews } from "../../../models/type";
 import { useTranslation } from 'react-i18next';
-import { rateNews } from '../../../api/news-api';
+import { rateNews, updateNewsAsync } from '../../../api/news-api';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import moment from "moment";
 import IStatusBar from "../../../models/status-bar";
@@ -27,8 +27,9 @@ interface IProps extends RouteComponentProps {
     newsArticleData: IResearchNews[];
     allKeywords: IKeyword[];
     updateNewsItem: (updatedNewsData: IResearchNews[]) => void;
-    showUpdateRatingStatus: (updatedStatus: IStatusBar) => void;
+    displayUpdateStatus: (updatedStatus: IStatusBar) => void;
     newsSources: IAthenaNewsSource[];
+    isUserAdmin: boolean;
 }
 
 const NewsArticle: React.FunctionComponent<IProps> = (props) => {
@@ -55,7 +56,7 @@ const NewsArticle: React.FunctionComponent<IProps> = (props) => {
         var response = await rateNews(tableId, rating, handleTokenAccessFailure);
 
         if (response && response.status === StatusCodes.OK) {
-            props.showUpdateRatingStatus({ id: status.id + 1, message: localize("ratingUpdatedSuccessMsg"), type: ActivityStatus.Success });
+            props.displayUpdateStatus({ id: status.id + 1, message: localize("ratingUpdatedSuccessMsg"), type: ActivityStatus.Success });
             setIsLoading(false);
 
             if (existingNewsData[index].userRating) {
@@ -75,9 +76,31 @@ const NewsArticle: React.FunctionComponent<IProps> = (props) => {
             props.updateNewsItem(existingNewsData);
         }
         else {
-            props.showUpdateRatingStatus({ id: status.id + 1, message: localize("generalErrorMessage"), type: ActivityStatus.Error });
+            props.displayUpdateStatus({ id: status.id + 1, message: localize("failedToUpdateRatingText"), type: ActivityStatus.Error });
             setIsLoading(false);
         }
+    }
+
+    /**
+     * Marks the news article as flagged.
+     * @param index The news article's index.
+     */
+    const handleFlagIconClick = async (index: number) => {
+        setIsLoading(true);
+
+        var existingNewsData = cloneDeep(newsList) as IResearchNews[];
+
+        var response = await updateNewsAsync(existingNewsData[index].tableId, true, handleTokenAccessFailure);
+
+        if (response && response.status === StatusCodes.OK) {
+            props.displayUpdateStatus({ id: status.id + 1, message: localize("markAsFlaggedSuccessMessage"), type: ActivityStatus.Success });
+            existingNewsData[index] = response.data;
+            props.updateNewsItem(existingNewsData);
+        }
+        else {
+            props.displayUpdateStatus({ id: status.id + 1, message: localize("markAsFlaggedErrorMessage"), type: ActivityStatus.Error });
+        }
+        setIsLoading(false);
     }
 
     /**
@@ -138,6 +161,10 @@ const NewsArticle: React.FunctionComponent<IProps> = (props) => {
                                                 {
                                                     news.isImportant &&
                                                     <FlagIcon size="medium" className="important-icon" />
+                                                }
+                                                {
+                                                    !news.isImportant && props.isUserAdmin &&
+                                                    <FlagIcon size="medium" className="flag-icon" onClick={() => handleFlagIconClick(index)} title={localize("newRequestMarkAsImportantLabel")} />
                                                 }
                                                 <Rating
                                                     max={5}

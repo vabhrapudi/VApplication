@@ -106,3 +106,17 @@ export const getNewsKeywordIdsAsync = async (
     let apiEndpoint: string = "/news/keywordIds";
     return await axios.get(apiEndpoint, handleTokenAccessFailure);
 }
+
+/**
+ * API to update new artcle.
+ * @param tableId The table Id of news article.
+ * @param isImportant Indicates whether the news article is important or not.
+ * @param handleTokenAccessFailure The callback function to handle token access failure.
+ */
+export const updateNewsAsync = async (
+    tableId: string,
+    isImportant: boolean,
+    handleTokenAccessFailure: (error: string) => void) => {
+    let apiEndpoint: string = `/news/update/${tableId}/${isImportant}`;
+    return await axios.patch(apiEndpoint, handleTokenAccessFailure);
+}

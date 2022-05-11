@@ -77,5 +77,12 @@ namespace Teams.Apps.Athena.Helpers
         /// </summary>
         /// <returns>The collection of Athena users.</returns>
         Task<IEnumerable<UserBotConversationEntity>> GetAthenaUsersAsync();
+
+        /// <summary>
+        /// Validates if the logged in user is Admin.
+        /// </summary>
+        /// <param name="userAadId">The aad Id of the user.</param>
+        /// <returns>Returns true if the logged in user is Admin, else return false.</returns>
+        Task<bool> ValidateIfUserIsAdmin(string userAadId);
     }
 }

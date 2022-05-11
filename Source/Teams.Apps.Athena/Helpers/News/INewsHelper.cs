@@ -90,5 +90,13 @@ namespace Teams.Apps.Athena.Helpers
         /// </summary>
         /// <returns>The collection of news keyword Ids.</returns>
         Task<IEnumerable<int>> GetNewsKeywordIdsAsync();
+
+        /// <summary>
+        /// Updates the news article.
+        /// </summary>
+        /// <param name="tableId">The table Id of news article.</param>
+        /// <param name="isImportant">Indicates if the news aricle is important.</param>
+        /// <returns>Returns the updated news article.</returns>
+        Task<NewsEntityDTO> UpdateNewsAsync(string tableId, bool isImportant);
     }
 }

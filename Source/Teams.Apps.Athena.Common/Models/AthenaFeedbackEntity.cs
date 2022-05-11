@@ -54,5 +54,17 @@ namespace Teams.Apps.Athena.Common.Models
         /// Gets or sets the user AAD Id who submitted the feedback.
         /// </summary>
         public string CreatedBy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the category.
+        /// </summary>
+        [IsSortable]
+        public int Category { get; set; }
+
+        /// <summary>
+        /// Gets or sets the feedback type.
+        /// </summary>
+        [IsSortable]
+        public int Type { get; set; }
     }
 }

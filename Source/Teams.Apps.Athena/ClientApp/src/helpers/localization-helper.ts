@@ -6,6 +6,8 @@
 import { TFunction } from "i18next";
 import { AthenaFeedbackEnum } from "../models/athena-feedback";
 import COIType from "../models/coi-type";
+import FeedbackCategory from "../models/feedback-category";
+import FeedbackType from "../models/feedback-type";
 import RequestStatus from "../models/request-status";
 
 /**
@@ -51,11 +53,11 @@ export function getLocalizedRequestStatus(status: RequestStatus, localize: TFunc
 }
 
 /**
- * Gets the localized string for feedback.
- * @param feedback The feedback type.
+ * Gets the localized string for feedback level.
+ * @param feedback The feedback level.
  * @param localize The instance of TFunction.
  */
-export function getFeedbackType(feedback: AthenaFeedbackEnum, localize: TFunction): string {
+export function getFeedbackLevelTitle(feedback: AthenaFeedbackEnum, localize: TFunction): string {
     switch (feedback) {
         case AthenaFeedbackEnum.Helpful:
             return localize("helpfulFeedback");
@@ -63,6 +65,48 @@ export function getFeedbackType(feedback: AthenaFeedbackEnum, localize: TFunctio
             return localize("notHelpfulFeedback");
         case AthenaFeedbackEnum.NeedsImprovement:
             return localize("needImprovementFeedback");
+        default:
+            return "NA";
+    }
+}
+
+/**
+ * Gets the localized string for feedback type.
+ * @param feedbackType The feedback type.
+ * @param localize The instance of TFunction.
+ */
+export function getFeedbackTypeTitle(feedbackType: FeedbackType, localize: TFunction): string {
+    switch (feedbackType) {
+        case FeedbackType.Bug:
+            return localize("feedbackTypeBug");
+        case FeedbackType.UIIssue:
+            return localize("feedbackTypeUIIssue");
+        case FeedbackType.FutureFeatureRequest:
+            return localize("feedbackTypeFutureFeatureRequest");
+        default:
+            return "NA";
+    }
+}
+
+/**
+ * Gets the localized string for feedback category.
+ * @param feedbackCategory The feedback category.
+ * @param localize The instance of TFunction.
+ */
+export function getFeedbackCategoryTitle(feedbackCategory: FeedbackCategory, localize: TFunction): string {
+    switch (feedbackCategory) {
+        case FeedbackCategory.Discover:
+            return localize("discoverText");
+        case FeedbackCategory.News:
+            return localize("newsText");
+        case FeedbackCategory.Insights:
+            return localize("insightsText");
+        case FeedbackCategory.Home:
+            return localize("homeText");
+        case FeedbackCategory.Admin:
+            return localize("adminText");
+        case FeedbackCategory.Other:
+            return localize("otherText");
         default:
             return "NA";
     }

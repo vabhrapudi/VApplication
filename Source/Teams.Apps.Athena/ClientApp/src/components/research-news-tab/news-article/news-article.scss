@@ -19,6 +19,7 @@
     height: 10.7rem !important;
     margin-right: 1rem;
     border-radius: 0.5rem;
+    object-fit: cover;
 }
 
 .rating-loader {
@@ -48,6 +49,17 @@
     border-radius: 2rem;
     color: #237B4B;
     margin-top: -0.5rem !important;
+}
+
+.flag-icon {
+    padding: 0.3rem 0rem 0rem 0.4rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 0.1rem solid;
+    border-radius: 2rem;
+    color: lightgray;
+    margin-top: -0.5rem !important;
+    cursor: pointer;
 }
 
 .article-heading {

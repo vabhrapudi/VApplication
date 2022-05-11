@@ -25,6 +25,7 @@ import { IAthenaNewsSource } from "../../../models/athena-news-source";
 import IDiscoveryTreeNodeType from "../../../models/discovery-tree-node-type";
 import INewsFilterParameters from "../../../models/news-filter-parameters";
 import { cloneDeep } from "lodash";
+import { validateIfUserIsAdmin } from "../../../api/user-settings-tab-api";
 
 import "./news-home.scss";
 
@@ -52,19 +53,20 @@ const NewsHome: React.FunctionComponent<INewsHomeProps> = (props: INewsHomeProps
     const [searchResults, setSearchResults] = React.useState<DropdownItemProps[]>([]);
     const [overflowOpen, setOverflowOpen] = React.useState<boolean>(false);
     const [selectedKeywordsPillsData, setSelectedKeywordsPillsData] = React.useState<any[]>([]);
+    const [isUserAdmin, setUserIsAdmin] = React.useState<boolean>(false);
 
     // Sort by menu items
     const sortItems = [
         {
-            key: '0',
-            content: localize("newsSortByDateText"),
+            key: 'news-sort-by-item-0',
+            content: localize("sortByDateText"),
         },
         {
-            key: '1',
+            key: 'news-sort-by-item-1',
             content: localize("newsSortBySignificaceText"),
         },
         {
-            key: '2',
+            key: 'news-sort-by-item-2',
             content: localize("newsSortByRatingText"),
         }
     ];
@@ -113,6 +115,15 @@ const NewsHome: React.FunctionComponent<INewsHomeProps> = (props: INewsHomeProps
         getNewsSources();
         getNewsTypes();
         getAllKeywords();
+        validateIfTheLoggedInUserIsAdmin();
+    }
+
+    // Validates if the logged in user is Admin.
+    const validateIfTheLoggedInUserIsAdmin = async () => {
+        var response = await validateIfUserIsAdmin(handleTokenAccessFailure);
+        if (response && response.status === StatusCodes.OK) {
+            setUserIsAdmin(response.data);
+        }
     }
 
     /**
@@ -268,7 +279,7 @@ const NewsHome: React.FunctionComponent<INewsHomeProps> = (props: INewsHomeProps
      * Shows the status of update rating action.
      * @param updatedStatus The updated status.
      */
-    const showUpdateRatingStatus = (updatedStatus: IStatusBar) => {
+    const displayUpdateStatus = (updatedStatus: IStatusBar) => {
         setStatus({ id: status.id + 1, message: updatedStatus.message, type: updatedStatus.type });
     }
 
@@ -464,7 +475,7 @@ const NewsHome: React.FunctionComponent<INewsHomeProps> = (props: INewsHomeProps
                                                 hasMore={hasMore}
                                             >
                                                 {
-                                                    <NewsArticle updateNewsItem={updateNewsItem} showUpdateRatingStatus={showUpdateRatingStatus} newsArticleData={newsData} allKeywords={allKeywords} newsSources={newsSources} />
+                                                    <NewsArticle updateNewsItem={updateNewsItem} displayUpdateStatus={displayUpdateStatus} newsArticleData={newsData} allKeywords={allKeywords} newsSources={newsSources} isUserAdmin={isUserAdmin} />
                                                 }
                                             </InfiniteScroll>
                                         </div>

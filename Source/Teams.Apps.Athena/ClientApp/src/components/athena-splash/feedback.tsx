@@ -11,21 +11,43 @@ import { AthenaFeedbackEnum, AthenaFeedBackEntity } from "../../models/athena-fe
 import { saveAthenaFeedbackAsync } from "../../api/feedback-api";
 import { RouteComponentProps } from "react-router-dom";
 import { StatusCodes } from "http-status-codes";
+import StatusBar from "../common/status-bar/status-bar";
+import IStatusBar from "../../models/status-bar";
+import { ActivityStatus } from "../../models/activity-status";
+import FeedbackCategory from "../../models/feedback-category";
+import FeedbackType from "../../models/feedback-type";
 
 const Feedback: React.FunctionComponent<RouteComponentProps> = (props) => {
-
     const localize = useTranslation().t;
     const [feedback, setFeedback] = React.useState<AthenaFeedBackEntity>({} as AthenaFeedBackEntity);
     const [loading, setLoading] = React.useState<boolean>(false);
     const [isSubmitSuccess, setIsSubmitSuccess] = React.useState<boolean>(false);
     const [message, setMessage] = React.useState<string>("");
     const [selectedFeedbackItem, setSelectedFeedbackItem] = React.useState<any>(undefined);
+    const [selectedCategory, setSelectedCategory] = React.useState<any>(undefined);
+    const [selectedType, setSelectedType] = React.useState<any>(undefined);
+    const [activityStatus, setActivityStatus] = React.useState<IStatusBar>({ id: 0, message: "", type: ActivityStatus.None });
+
     const feedbackList = [
         { key: "helpful", header: localize("helpfulFeedback"), value: AthenaFeedbackEnum.Helpful },
         { key: "nothelpful", header: localize("notHelpfulFeedback"), value: AthenaFeedbackEnum.NotHelpful },
         { key: "needimprovement", header: localize("needImprovementFeedback"), value: AthenaFeedbackEnum.NeedsImprovement }
     ];
 
+    const categoryList = [
+        { key: "category-discover", header: localize("discoverText"), value: FeedbackCategory.Discover },
+        { key: "category-news", header: localize("newsText"), value: FeedbackCategory.News },
+        { key: "category-insights", header: localize("insightsTabDisplayName"), value: FeedbackCategory.Insights },
+        { key: "category-home", header: localize("homeText"), value: FeedbackCategory.Home },
+        { key: "category-admin", header: localize("adminText"), value: FeedbackCategory.Admin },
+        { key: "category-other", header: localize("otherText"), value: FeedbackCategory.Other }
+    ];
+
+    const typeList = [
+        { key: "type-bug", header: localize("feedbackTypeBug"), value: FeedbackType.Bug },
+        { key: "type-ui-issue", header: localize("feedbackTypeUIIssue"), value: FeedbackType.UIIssue },
+        { key: "type-future-feature-request", header: localize("feedbackTypeFutureFeatureRequest"), value: FeedbackType.FutureFeatureRequest }
+    ];
 
     useEffect(() => {
         microsoftTeams.initialize();
@@ -39,7 +61,7 @@ const Feedback: React.FunctionComponent<RouteComponentProps> = (props) => {
     const onFeedbackSelectionChange = (event: any, item: any) => {
         let selectedDropdownItem = feedbackList.filter((feedback: any) => feedback.value === item.value.value);
         setSelectedFeedbackItem(selectedDropdownItem);
-        setFeedback({ details: feedback.details, feedback: item.value.value });
+        setFeedback((prevState) => ({ ...prevState, feedback: item.value.value }));
     }
 
     /**
@@ -50,8 +72,24 @@ const Feedback: React.FunctionComponent<RouteComponentProps> = (props) => {
         props.history.push("/signin");
     }
 
+    // Validates UI fields.
+    const validateFields = () => {
+        if (!feedback?.details) {
+            setActivityStatus((prevState) => ({ id: prevState.id + 1, message: localize("feedbackDetailsRequiredMessage"), type: ActivityStatus.Error }));
+            return false;
+        }
+
+        return true;
+    }
+
     // Open task module to submit Athena feedback.
     const submitFeedback = async () => {
+        let isAllFieldsValid = validateFields();
+
+        if (!isAllFieldsValid) {
+            return;
+        }
+
         setLoading(true);
         let response = await saveAthenaFeedbackAsync(feedback, handleTokenAccessFailure);
 
@@ -77,12 +115,34 @@ const Feedback: React.FunctionComponent<RouteComponentProps> = (props) => {
      */
     const onDescriptionChange = (event: any) => {
         let description = event.target.value;
-        setFeedback({ details: description, feedback: feedback.feedback });
+        setFeedback((prevState) => ({ ...prevState, details: description }));
     }
 
     const onBackClick = () => {
         setMessage("");
         setIsSubmitSuccess(false);
+    }
+
+    /**
+     * Event handler called when category gets changed.
+     * @param event The event details.
+     * @param eventData The event data.
+     */
+    const onCategorySelectionChange = (event: any, eventData: any) => {
+        let selectedDropdownItem = categoryList.filter((category: any) => category.value === eventData.value.value);
+        setSelectedCategory(selectedDropdownItem);
+        setFeedback((prevState) => ({ ...prevState, category: eventData.value.value }));
+    }
+
+    /**
+     * Event handler called when type gets changed.
+     * @param event The event details.
+     * @param eventData The event data.
+     */
+    const onTypeSelectionChange = (event: any, eventData: any) => {
+        let selectedDropdownItem = typeList.filter((type: any) => type.value === eventData.value.value);
+        setSelectedType(selectedDropdownItem);
+        setFeedback((prevState) => ({ ...prevState, type: eventData.value.value }));
     }
 
     const renderComponent = () => {
@@ -110,6 +170,7 @@ const Feedback: React.FunctionComponent<RouteComponentProps> = (props) => {
         else {
             return (<div className="task-module-container athena-splash-page-content">
                 <Flex fill gap="gap.small" column>
+                    <StatusBar status={activityStatus} isMobile={false} />
                     <Flex.Item grow>
                         <Flex className="overflow-y" column gap="gap.medium">
                             <Flex column>
@@ -129,6 +190,20 @@ const Feedback: React.FunctionComponent<RouteComponentProps> = (props) => {
                                 onChange={onFeedbackSelectionChange}
                                 value={selectedFeedbackItem}
                                 fluid />
+                            <FormDropdown
+                                label={localize("categoryText")}
+                                placeholder={localize("select")}
+                                items={categoryList}
+                                onChange={onCategorySelectionChange}
+                                value={selectedCategory}
+                                fluid />
+                            <FormDropdown
+                                label={localize("typeText")}
+                                placeholder={localize("select")}
+                                items={typeList}
+                                onChange={onTypeSelectionChange}
+                                value={selectedType}
+                                fluid />
                         </Flex>
                     </Flex.Item>
                     <Flex.Item push>
@@ -142,7 +217,6 @@ const Feedback: React.FunctionComponent<RouteComponentProps> = (props) => {
                                     onClick={submitFeedback}
                                 />
                             </Flex.Item>
-
                         </Flex>
                     </Flex.Item>
                 </Flex>

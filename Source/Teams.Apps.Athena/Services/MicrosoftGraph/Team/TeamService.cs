@@ -246,7 +246,7 @@ namespace Teams.Apps.Athena.Services.MicrosoftGraph
             catch (Exception ex)
             {
                 this.teamServiceLogger.LogError(ex, $"Failed to get team members of team {teamId}.");
-                throw;
+                return Enumerable.Empty<AadUserConversationMember>();
             }
         }
     }

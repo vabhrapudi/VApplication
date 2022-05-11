@@ -19,6 +19,7 @@ namespace Teams.Apps.Athena.Common.Services.Search
     using Polly.Retry;
     using Teams.Apps.Athena.Common.Extensions;
     using Teams.Apps.Athena.Common.Models;
+    using Teams.Apps.Athena.Common.Models.Enums;
     using Teams.Apps.Athena.Common.Repositories;
     using Index = Microsoft.Azure.Search.Models.Index;
 
@@ -323,10 +324,24 @@ namespace Teams.Apps.Athena.Common.Services.Search
                     nameof(AthenaFeedbackEntity.Details),
                     nameof(AthenaFeedbackEntity.CreatedAt),
                     nameof(AthenaFeedbackEntity.CreatedBy),
+                    nameof(AthenaFeedbackEntity.Category),
+                    nameof(AthenaFeedbackEntity.Type),
                 },
                 Filter = searchParametersDTO.Filter,
-                OrderBy = new List<string> { $"{nameof(AthenaFeedbackEntity.CreatedAt)} desc" },
             };
+
+            if (searchParametersDTO.SortByFilter == (int)AthenaFeedbackSortByItems.Recent)
+            {
+                searchParameters.OrderBy = new List<string> { $"{nameof(AthenaFeedbackEntity.CreatedAt)} desc" };
+            }
+            else if (searchParametersDTO.SortByFilter == (int)AthenaFeedbackSortByItems.Category)
+            {
+                searchParameters.OrderBy = new List<string> { $"{nameof(AthenaFeedbackEntity.Category)} asc", $"{nameof(AthenaFeedbackEntity.CreatedAt)} desc" };
+            }
+            else if (searchParametersDTO.SortByFilter == (int)AthenaFeedbackSortByItems.FeeedbackType)
+            {
+                searchParameters.OrderBy = new List<string> { $"{nameof(AthenaFeedbackEntity.Type)} asc", $"{nameof(AthenaFeedbackEntity.CreatedAt)} desc" };
+            }
 
             if (searchParametersDTO.IsGetAllRecords)
             {

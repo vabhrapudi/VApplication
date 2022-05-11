@@ -9,6 +9,9 @@ namespace Teams.Apps.Athena.Helpers
     using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.Extensions.Caching.Memory;
+    using Microsoft.Extensions.Options;
+    using Microsoft.Teams.Athena.Models;
     using Newtonsoft.Json;
     using Teams.Apps.Athena.Common.Extensions;
     using Teams.Apps.Athena.Common.Helpers;
@@ -40,13 +43,40 @@ namespace Teams.Apps.Athena.Helpers
         /// </summary>
         private readonly IUserSettingsMapper userSettingsMapper;
 
+        /// <summary>
+        /// The instance of <see cref="TeamService"/> class.
+        /// </summary>
         private readonly ITeamService teamService;
 
+        /// <summary>
+        /// The instance of <see cref="UsersSearchService"/> class.
+        /// </summary>
         private readonly IUsersSearchService usersSearchService;
 
+        /// <summary>
+        /// The instance of <see cref="FilterQueryHelper"/> class.
+        /// </summary>
         private readonly IFilterQueryHelper filterQueryHelper;
 
+        /// <summary>
+        /// The instance of <see cref="UserBotConversationRepository"/> class.
+        /// </summary>
         private readonly IUserBotConversationRepository userBotConversationRepository;
+
+        /// <summary>
+        /// The instance of <see cref="MemoryCache"/> class.
+        /// </summary>
+        private readonly IMemoryCache memoryCache;
+
+        /// <summary>
+        /// The options for application configuration.
+        /// </summary>
+        private readonly IOptions<BotSettings> botOptions;
+
+        /// <summary>
+        /// The instance of <see cref="TeamRepository"/> class.
+        /// </summary>
+        private readonly ITeamRepository teamRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserSettingsHelper"/> class.
@@ -58,6 +88,9 @@ namespace Teams.Apps.Athena.Helpers
         /// <param name="usersSearchService">The instance of <see cref="UsersSearchService"/> class.</param>
         /// <param name="filterQueryHelper">The instance of <see cref="FilterQueryHelper"/> class.</param>
         /// <param name="userBotConversationRepository">The instance of <see cref="UserBotConversationRepository"/> class.</param>
+        /// <param name="memoryCache">The instance of <see cref="MemoryCache"/> class.</param>
+        /// <param name="botOptions">The options for application configuration.</param>
+        /// <param name="teamRepository">The instance of <see cref="TeamRepository"/> class.</param>
         public UserSettingsHelper(
             IUserRepository userRepository,
             IUserSettingsMapper userSettingsMapper,
@@ -65,7 +98,10 @@ namespace Teams.Apps.Athena.Helpers
             ICoiRepository coiRepository,
             IUsersSearchService usersSearchService,
             IFilterQueryHelper filterQueryHelper,
-            IUserBotConversationRepository userBotConversationRepository)
+            IUserBotConversationRepository userBotConversationRepository,
+            IMemoryCache memoryCache,
+            IOptions<BotSettings> botOptions,
+            ITeamRepository teamRepository)
         {
             this.userRepository = userRepository;
             this.userSettingsMapper = userSettingsMapper;
@@ -74,6 +110,9 @@ namespace Teams.Apps.Athena.Helpers
             this.usersSearchService = usersSearchService;
             this.filterQueryHelper = filterQueryHelper;
             this.userBotConversationRepository = userBotConversationRepository;
+            this.memoryCache = memoryCache;
+            this.botOptions = botOptions;
+            this.teamRepository = teamRepository;
         }
 
         /// <inheritdoc/>
@@ -258,6 +297,52 @@ namespace Teams.Apps.Athena.Helpers
         public async Task<IEnumerable<UserBotConversationEntity>> GetAthenaUsersAsync()
         {
             return await this.userBotConversationRepository.GetAllAsync();
+        }
+
+        /// <inheritdoc/>
+        public async Task<bool> ValidateIfUserIsAdmin(string userAadId)
+        {
+            bool isValueAvailableInCache = this.memoryCache.TryGetValue(this.GetCacheKey(userAadId), out bool isUserAdmin);
+
+            if (isValueAvailableInCache)
+            {
+                if (isUserAdmin)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+            // Get the details of admin team.
+            var teamDetails = await this.teamRepository.GetAsync(TeamTableMetadata.TeamPartitionKey, this.botOptions.Value.AdminTeamId);
+
+            if (teamDetails == null)
+            {
+                return false;
+            }
+
+            var teamMembers = await this.teamService.GetTeamMembersAsync(teamDetails.GroupId);
+            var isUserMemberOfTeam = teamMembers.Any(teamMember => teamMember.UserId == userAadId);
+
+            this.memoryCache.Set(this.GetCacheKey(userAadId), isUserMemberOfTeam, TimeSpan.FromMinutes(this.botOptions.Value.AdminDetailsCacheDurationInMinutes));
+
+            if (isUserMemberOfTeam)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Gets the cache key.
+        /// </summary>
+        /// <param name="userAadId">The user AAD Id.</param>
+        /// <returns>The cache key.</returns>
+        private string GetCacheKey(string userAadId)
+        {
+            return $"is_admin_{userAadId}";
         }
     }
 }

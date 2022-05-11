@@ -369,5 +369,27 @@ namespace Teams.Apps.Athena.Helpers
 
             return null;
         }
+
+        /// <inheritdoc/>
+        public async Task<NewsEntityDTO> UpdateNewsAsync(string tableId, bool isImportant)
+        {
+            var newsArticleRequest = await this.newsRepository.GetAsync(NewsTableMetadata.NewsPartitionKey, tableId);
+
+            if (newsArticleRequest == null)
+            {
+                return null;
+            }
+
+            newsArticleRequest.IsImportant = isImportant;
+
+            var updatedNewsArticleRequest = await this.newsRepository.InsertOrMergeAsync(newsArticleRequest);
+
+            if (updatedNewsArticleRequest != null)
+            {
+                await this.newsSearchService.RunIndexerOnDemandAsync();
+            }
+
+            return this.newsMapper.MapForViewModel(updatedNewsArticleRequest);
+        }
     }
 }

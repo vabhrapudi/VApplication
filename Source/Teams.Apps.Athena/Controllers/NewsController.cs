@@ -295,5 +295,38 @@ namespace Teams.Apps.Athena.Controllers
                 throw;
             }
         }
+
+        /// <summary>
+        /// Updates the news article.
+        /// </summary>
+        /// <param name="tableId">The table Id of news article.</param>
+        /// <param name="isImportant">Indicates if the news aricle is important.</param>
+        /// <returns>Returns the updated news article.</returns>
+        [HttpPatch("update/{tableId}/{isImportant}")]
+        public async Task<IActionResult> UpdateNewsAsync(Guid tableId, bool isImportant)
+        {
+            this.RecordEvent("UpdateNewsAsync", RequestType.Initiated);
+
+            try
+            {
+                var response = await this.newsHelper.UpdateNewsAsync(tableId.ToString(), isImportant);
+
+                if (response == null)
+                {
+                    this.RecordEvent("UpdateNewsAsync", RequestType.Failed);
+                    return this.NotFound();
+                }
+
+                this.RecordEvent("UpdateNewsAsync", RequestType.Succeeded);
+
+                return this.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                this.RecordEvent("UpdateNewsAsync", RequestType.Failed);
+                this.logger.LogError(ex, "Error occurred while updating news article.");
+                throw;
+            }
+        }
     }
 }

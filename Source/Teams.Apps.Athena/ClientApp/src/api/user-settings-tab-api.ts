@@ -107,3 +107,13 @@ export const getAthenaActiveUsersCountAsync = async (
     let apiEndpoint = "/usersetting/active-users/count";
     return await axios.get(apiEndpoint, handleTokenAccessFailure);
 }
+
+/**
+ * API request to validate if the logged in user is Admin.
+ * @param handleTokenAccessFailure The callback function to handle token access failure.
+ */
+export const validateIfUserIsAdmin = async (
+    handleTokenAccessFailure: (error: string) => void) => {
+    let apiEndpoint: string = "/usersetting/isAdmin";
+    return await axios.get(apiEndpoint, handleTokenAccessFailure);
+}

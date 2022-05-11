@@ -18,7 +18,7 @@ import { TFunction } from "i18next";
 import { AthenaFeedBackEntity } from "../../../models/athena-feedback";
 import ProfilePic from "../../common/person-avatar/person-avatar";
 import { getFeedbackDetailsAsync } from "../../../api/feedback-api";
-import { getFeedbackType } from "../../../helpers/localization-helper";
+import { getFeedbackLevelTitle } from "../../../helpers/localization-helper";
 
 interface IFeedbackDetailsTaskModuleProps extends RouteComponentProps {
 }
@@ -75,13 +75,13 @@ const FeedbackDetails: React.FunctionComponent<IFeedbackDetailsTaskModuleProps> 
                         <Flex fill column gap="gap.medium" className="task-module-container">
                             <Flex column gap="gap.small">
                                 <Text content={`${localize("feedbackText")}:`} weight="semibold" />
-                                <Text content={getFeedbackType(feedbackDetails.feedback, localize)} />
+                                <Text content={getFeedbackLevelTitle(feedbackDetails.feedback, localize)} />
                             </Flex>
                             <Flex column gap="gap.small">
                                 <Text content={`${localize("submittedByTitle")}:`} weight="semibold" />
                                 <Flex vAlign="center" gap="gap.smaller">
                                     <ProfilePic profilePhoto={feedbackDetails?.createdBy?.profileImage ?? ""} userName={feedbackDetails?.createdBy?.displayName ?? "NA"} />
-                                    <Text content={feedbackDetails?.createdBy?.displayName ?? "NA"} />
+                                    <Text content={feedbackDetails?.createdBy?.displayName ?? localize('unknownText')} />
                                 </Flex>
                             </Flex>
                             <Flex column gap="gap.small">

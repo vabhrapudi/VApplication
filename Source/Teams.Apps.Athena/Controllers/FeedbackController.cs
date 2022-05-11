@@ -14,6 +14,7 @@ namespace Teams.Apps.Athena.Controllers
     using Microsoft.Extensions.Logging;
     using Teams.Apps.Athena.Common.Extensions;
     using Teams.Apps.Athena.Common.Models;
+    using Teams.Apps.Athena.Common.Models.Enums;
     using Teams.Apps.Athena.Helpers;
     using Teams.Apps.Athena.Models;
 
@@ -78,10 +79,11 @@ namespace Teams.Apps.Athena.Controllers
         /// Gets user feedbacks related to Athena.
         /// </summary>
         /// <param name="pageNumber">Page number for which feedbacks needs to be fetched.</param>
+        /// <param name="sortBy">Represents 0 for recent, 1 for category and 2 for feedback type for feedback. Refer <see cref="AthenaFeedbackSortByItems"/> for values.</param>
         /// <param name="feedbackFilterValues">The values to filter feedbacks by feedback types.</param>
         /// <returns>List of feedbacks.</returns>
         [HttpPost("athenaFeedbacks")]
-        public async Task<IActionResult> GetAthenaFeedbacksAsync(int pageNumber, [FromBody] IEnumerable<int> feedbackFilterValues)
+        public async Task<IActionResult> GetAthenaFeedbacksAsync(int pageNumber, int sortBy, [FromBody] IEnumerable<int> feedbackFilterValues)
         {
             this.RecordEvent("HTTP GET- GetAthenaFeedbacksAsync", RequestType.Initiated);
 
@@ -109,7 +111,7 @@ namespace Teams.Apps.Athena.Controllers
 
             try
             {
-                var feedbacks = await this.feedbackHelper.GetAthenaFeedbacksAsync(pageNumber, feedbackFilterValues);
+                var feedbacks = await this.feedbackHelper.GetAthenaFeedbacksAsync(pageNumber, sortBy, feedbackFilterValues);
 
                 if (feedbacks == null)
                 {

@@ -10,7 +10,9 @@ export interface AthenaFeedBackEntity {
     feedback: number,
     details: string,
     createdAt?: Date,
-    createdBy?: UserDetails
+    createdBy?: UserDetails,
+    category: number;
+    type: number;
 }
 
 export enum AthenaFeedbackEnum {

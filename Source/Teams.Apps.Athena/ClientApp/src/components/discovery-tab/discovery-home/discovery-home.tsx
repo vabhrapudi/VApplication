@@ -538,7 +538,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
         }
 
         if (selectedFilters?.length > 0) {
-            this.setState({ initialFilterData: filterData, selectedFilters }, () => {
+            this.setState({ initialFilterData: filterData, selectedFilters, selectedKeywords: [], searchString: "" }, () => {
                 this.getFilters();
                 this.getFilterPillsData();
                 this.searchAndFilterAsync(this.state.selectedFilters);
@@ -1300,6 +1300,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                             tooltip: sponsor.description,
                             dataValue: sponsor,
                             nodeTypeId: sponsor.nodeTypeId,
+                            date: this.getItemDate(sponsor.nodeTypeId, sponsor, "YYYY-MM-DD")
                         } as ITaxonomyElement;
                     });
 
@@ -1323,6 +1324,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                             tooltip: partner.description,
                             dataValue: partner,
                             nodeTypeId: partner.nodeTypeId,
+                            date: this.getItemDate(partner.nodeTypeId, partner, "YYYY-MM-DD")
                         } as ITaxonomyElement;
                     });
 
@@ -1418,6 +1420,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                             tooltip: user.emailAddress,
                             dataValue: user,
                             nodeTypeId: user.nodeTypeId,
+                            date: this.getItemDate(user.nodeTypeId, user, "YYYY-MM-DD")
                         } as ITaxonomyElement;
                     });
 
@@ -1465,6 +1468,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                             tooltip: athenaTool.description,
                             dataValue: athenaTool,
                             nodeTypeId: athenaTool.nodeTypeId,
+                            date: this.getItemDate(athenaTool.nodeTypeId, athenaTool, "YYYY-MM-DD")
                         } as ITaxonomyElement;
                     });
 
@@ -1906,6 +1910,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                 tooltip: sponsor.description,
                 dataValue: sponsor,
                 nodeTypeId: sponsor.nodeTypeId,
+                date: this.getItemDate(sponsor.nodeTypeId, sponsor, "YYYY-MM-DD")
             } as ITaxonomyElement;
 
             let isFlatListHasData: boolean = flatListData.some((x: ITaxonomyElement) => x.taxonomyId === nodeToAdd.taxonomyId);
@@ -1928,6 +1933,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                 tooltip: partner.description,
                 dataValue: partner,
                 nodeTypeId: partner.nodeTypeId,
+                date: this.getItemDate(partner.nodeTypeId, partner, "YYYY-MM-DD")
             } as ITaxonomyElement;
 
             let isFlatListHasData: boolean = flatListData.some((x: ITaxonomyElement) => x.taxonomyId === nodeToAdd.taxonomyId);
@@ -2042,6 +2048,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                 tooltip: user.emailAddress,
                 dataValue: user,
                 nodeTypeId: user.nodeTypeId,
+                date: this.getItemDate(user.nodeTypeId, user, "YYYY-MM-DD")
             } as ITaxonomyElement;
 
             let isFlatListHasData: boolean = flatListData.some((x: ITaxonomyElement) => x.taxonomyId === nodeToAdd.taxonomyId);
@@ -2087,6 +2094,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                 tooltip: athenaTool.description,
                 dataValue: athenaTool,
                 nodeTypeId: athenaTool.nodeTypeId,
+                date: this.getItemDate(athenaTool.nodeTypeId, athenaTool, "YYYY-MM-DD")
             } as ITaxonomyElement;
 
             let isFlatListHasData: boolean = flatListData.some((x: ITaxonomyElement) => x.taxonomyId === nodeToAdd.taxonomyId);
@@ -3389,7 +3397,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
             if (nodeType) {
                 var jsonFile = nodeType.jsonFile;
                 var dateFieldName = nodeType.dateFieldName;
-                if (dateFieldName !== "NA") {
+                if (dateFieldName && dateFieldName !== "NA") {
                     dateFieldName = dateFieldName.charAt(0).toLowerCase() + dateFieldName.slice(1);
                     if (jsonFile === DiscoveryNodeFileNames.AthenaNewsArticles) {
                         return data[dateFieldName] ? moment(data[dateFieldName]).format(`${dateFormat} hh:mm A`) : undefined;
@@ -3519,6 +3527,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                         tooltip: partner.description,
                         dataValue: partner,
                         nodeTypeId: partner.nodeTypeId,
+                        date: this.getItemDate(partner.nodeTypeId, partner, "YYYY-MM-DD")
                     } as ITaxonomyElement;
                 });
 
@@ -3590,6 +3599,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                         tooltip: sponsor.description,
                         dataValue: sponsor,
                         nodeTypeId: sponsor.nodeTypeId,
+                        date: this.getItemDate(sponsor.nodeTypeId, sponsor, "YYYY-MM-DD")
                     } as ITaxonomyElement;
                 });
 
@@ -3607,6 +3617,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                         tooltip: user.emailAddress,
                         dataValue: user,
                         nodeTypeId: user.nodeTypeId,
+                        date: this.getItemDate(user.nodeTypeId, user, "YYYY-MM-DD")
                     } as ITaxonomyElement;
                 });
 
@@ -3642,6 +3653,7 @@ class DiscoveryHome extends React.Component<IDiscoveryHomeProps, IDiscoveryHomeS
                         tooltip: athenaTool.description,
                         dataValue: athenaTool,
                         nodeTypeId: athenaTool.nodeTypeId,
+                        date: this.getItemDate(athenaTool.nodeTypeId, athenaTool, "YYYY-MM-DD")
                     } as ITaxonomyElement;
                 });
 

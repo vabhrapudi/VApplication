@@ -93,7 +93,7 @@ const CollectionsTable: React.FunctionComponent<ICollectionTableProps> = (props:
             {
                 content:
                     <Flex gap="gap.small">
-                        <Text content={localize("researchTypeText")} />
+                        <Text content={localize("titleText")} />
                     </Flex>,
                 design: tableResearchColumnDesign
             },
@@ -111,7 +111,7 @@ const CollectionsTable: React.FunctionComponent<ICollectionTableProps> = (props:
             },
             {
                 content: <Flex gap="gap.small">
-                    <Text content={localize("categoryText")} />
+                    <Text content={localize("resourceTypeText")} />
                 </Flex>,
                 design: tableCategoryColumnDesign
             }

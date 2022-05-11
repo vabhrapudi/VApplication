@@ -25,5 +25,17 @@ namespace Teams.Apps.Athena.Models
         [Required]
         [Range(0, 2)]
         public AthenaFeedbackValues Feedback { get; set; }
+
+        /// <summary>
+        /// Gets or sets the category.
+        /// </summary>
+        [Range(0, 6)]
+        public AthenaFeebackCategory Category { get; set; }
+
+        /// <summary>
+        /// Gets or sets the feedback type.
+        /// </summary>
+        [Range(0, 3)]
+        public AthenaFeedbackType Type { get; set; }
     }
 }

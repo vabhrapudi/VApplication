@@ -29,6 +29,8 @@ namespace Teams.Apps.Athena.Mappers
                 Feedback = (int)athenaFeedbackCreateDTO.Feedback,
                 CreatedAt = DateTime.UtcNow,
                 CreatedBy = userAadObjectId,
+                Category = (int)athenaFeedbackCreateDTO.Category,
+                Type = (int)athenaFeedbackCreateDTO.Type,
             };
         }
 
@@ -36,7 +38,6 @@ namespace Teams.Apps.Athena.Mappers
         public AthenaFeedbackViewDTO MapForViewModel(AthenaFeedbackEntity athenaFeedbackEntity, UserDetails userDetails)
         {
             athenaFeedbackEntity = athenaFeedbackEntity ?? throw new ArgumentNullException(nameof(athenaFeedbackEntity));
-            userDetails = userDetails ?? throw new ArgumentNullException(nameof(userDetails));
 
             return new AthenaFeedbackViewDTO
             {
@@ -45,6 +46,8 @@ namespace Teams.Apps.Athena.Mappers
                 Feedback = athenaFeedbackEntity.Feedback,
                 CreatedAt = athenaFeedbackEntity.CreatedAt,
                 CreatedBy = userDetails,
+                Category = athenaFeedbackEntity.Category,
+                Type = athenaFeedbackEntity.Type,
             };
         }
     }

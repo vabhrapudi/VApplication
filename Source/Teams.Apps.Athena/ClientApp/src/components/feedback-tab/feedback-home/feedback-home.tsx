@@ -7,7 +7,7 @@ import * as React from 'react';
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { AthenaFeedBackEntity, AthenaFeedbackEnum } from '../../../models/athena-feedback';
-import { Flex, Text, Image, FilterIcon, Popup, Button } from "@fluentui/react-northstar";
+import { Flex, Text, Image, FilterIcon, Popup, Button, MenuButton, ChevronDownIcon } from "@fluentui/react-northstar";
 import InfiniteScroll from "react-infinite-scroller";
 import StatusBar from "../../common/status-bar/status-bar";
 import IStatusBar from "../../../models/status-bar";
@@ -20,7 +20,7 @@ import Constants from '../../../constants/constants';
 import FeedbackCard from "../feedback-card/feedback-card";
 import FilterPopup from '../../common/filter-popup/filter-popup';
 import Loader from "../../common/loader/loader";
-import { getFeedbackType } from '../../../helpers/localization-helper';
+import { getFeedbackLevelTitle } from '../../../helpers/localization-helper';
 import IFilterItem from '../../../models/filter-item';
 
 import "./feedback-home.scss";
@@ -36,11 +36,28 @@ const FeedbackHome: React.FunctionComponent<IFeedbackHomeProps> = (props: IFeedb
     const [key, setKey] = React.useState<number>(0);
     const [status, setStatus] = React.useState<IStatusBar>({ id: 0, message: "", type: ActivityStatus.None });
     const [selectedFilters, setSelectedFilters] = React.useState<AthenaFeedbackEnum[]>([]);
+    const [sortBy, setSortBy] = React.useState<number>(0);
 
     let feedbackFilterList: IFilterItem[] = [
-        { key: AthenaFeedbackEnum.Helpful, header: getFeedbackType(AthenaFeedbackEnum.Helpful, localize), isChecked: false } as IFilterItem,
-        { key: AthenaFeedbackEnum.NotHelpful, header: getFeedbackType(AthenaFeedbackEnum.NotHelpful, localize), isChecked: false } as IFilterItem,
-        { key: AthenaFeedbackEnum.NeedsImprovement, header: getFeedbackType(AthenaFeedbackEnum.NeedsImprovement, localize), isChecked: false } as IFilterItem
+        { key: AthenaFeedbackEnum.Helpful, header: getFeedbackLevelTitle(AthenaFeedbackEnum.Helpful, localize), isChecked: false } as IFilterItem,
+        { key: AthenaFeedbackEnum.NotHelpful, header: getFeedbackLevelTitle(AthenaFeedbackEnum.NotHelpful, localize), isChecked: false } as IFilterItem,
+        { key: AthenaFeedbackEnum.NeedsImprovement, header: getFeedbackLevelTitle(AthenaFeedbackEnum.NeedsImprovement, localize), isChecked: false } as IFilterItem
+    ];
+
+    // Sort by menu items
+    const sortItems = [
+        {
+            key: 'feedback-sort-by-item-0',
+            content: localize("sortByDateText"),
+        },
+        {
+            key: 'feedback-sort-by-item-1',
+            content: localize("categoryText"),
+        },
+        {
+            key: 'feedback-sort-by-item-2',
+            content: localize("sortByFeedbackTypeText"),
+        }
     ];
 
     React.useEffect(() => {
@@ -48,7 +65,7 @@ const FeedbackHome: React.FunctionComponent<IFeedbackHomeProps> = (props: IFeedb
             setKey(key + 1);
         }
         getFeedbackData(0);
-    }, [selectedFilters]);
+    }, [selectedFilters, sortBy]);
 
     /**
      * Redirects to sign-in page.
@@ -66,7 +83,7 @@ const FeedbackHome: React.FunctionComponent<IFeedbackHomeProps> = (props: IFeedb
         if (pageNumber === 0) {
             setIsLoading(true);
         }
-        let response = await getAthenaFeedbacksAsync(pageNumber, selectedFilters, handleTokenAccessFailure);
+        let response = await getAthenaFeedbacksAsync(pageNumber, sortBy, selectedFilters, handleTokenAccessFailure);
         if (response && response.status === StatusCodes.OK) {
             setIsLoading(false);
             if (pageNumber === 0) {
@@ -100,12 +117,26 @@ const FeedbackHome: React.FunctionComponent<IFeedbackHomeProps> = (props: IFeedb
         if (hasMore === false) setHasMore(true);
     }
 
+    /**
+     * Handles the sort by menu item selection.
+     * @param event The event.
+     * @param menuItemProps The menu item props.
+     */
+    const handleSortItemClick = (event: any, menuItemProps: any) => {
+        setSortBy(Number(menuItemProps.index));
+    }
+
     return (
         <>
             <StatusBar status={status} isMobile={false} />
             <AthenaSplash heading={localize("feedbackTabSplashHeading")} />
             <Flex gap="gap.small" padding="padding.medium" column className="feedback-main-container">
                 <Flex gap="gap.small" hAlign="end" vAlign="center">
+                    <MenuButton
+                        trigger={<Button icon={<ChevronDownIcon />} iconOnly text content={localize("sortByBtnText")} iconPosition="after" className="icon-pointer" disabled={isLoading} />}
+                        menu={sortItems}
+                        onMenuItemClick={handleSortItemClick}
+                    />
                     <Popup
                         trigger={<Button
                             className="icon-pointer"

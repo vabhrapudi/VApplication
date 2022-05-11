@@ -2,6 +2,8 @@
 // Copyright (c) NPS Foundation.
 // </copyright>
 
+@import "./../../../styles/variables.scss";
+
 .collections-main-container {
     width: 100%;
     height: 100vh;
@@ -71,5 +73,6 @@
 }
 
 .collections-name-text {
-    padding-top: 0.5rem;
+    padding-top: 0.2rem;
+    color: $athena-blue-color;
 }

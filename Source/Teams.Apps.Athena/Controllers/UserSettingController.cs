@@ -352,5 +352,30 @@ namespace Teams.Apps.Athena.Controllers
                 throw;
             }
         }
+
+        /// <summary>
+        /// Validates if the logged in user is Admin.
+        /// </summary>
+        /// <returns>Returns true if the logged in user is Admin, else return false.</returns>
+        [HttpGet("isAdmin")]
+        public async Task<IActionResult> ValidateIfUserIsAdmin()
+        {
+            this.RecordEvent("HTTP GET- ValidateIfUserIsAdmin", RequestType.Initiated);
+
+            try
+            {
+                var response = await this.userSettingsHelper.ValidateIfUserIsAdmin(this.UserAadId);
+
+                this.RecordEvent("HTTP GET- ValidateIfUserIsAdmin", RequestType.Succeeded);
+
+                return this.Ok(response);
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError(ex, "Error occurred while validating if the user is Admin.");
+                this.RecordEvent("HTTP GET- ValidateIfUserIsAdmin", RequestType.Failed);
+                throw;
+            }
+        }
     }
 }

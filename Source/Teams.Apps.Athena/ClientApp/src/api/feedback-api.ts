@@ -27,11 +27,13 @@ export const saveAthenaFeedbackAsync = async (
  */
 export const getAthenaFeedbacksAsync = async (
     pageNumber: number,
+    sortBy: number,
     feedbackFilterValues: number[],
     handleTokenAccessFailure: (error: string) => void) => {
     let apiEndpoint: string = "/feedback/athenaFeedbacks";
     let config: AxiosRequestConfig = axios.getAPIRequestConfigParams({
-        pageNumber
+        pageNumber,
+        sortBy
     });
 
     return axios.post(apiEndpoint, handleTokenAccessFailure, feedbackFilterValues, config);

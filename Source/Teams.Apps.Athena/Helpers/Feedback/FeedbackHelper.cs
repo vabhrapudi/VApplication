@@ -85,13 +85,14 @@ namespace Teams.Apps.Athena.Helpers
         }
 
         /// <inheritdoc/>
-        public async Task<IEnumerable<AthenaFeedbackViewDTO>> GetAthenaFeedbacksAsync(int pageNumber, IEnumerable<int> feedbackFilterValues)
+        public async Task<IEnumerable<AthenaFeedbackViewDTO>> GetAthenaFeedbacksAsync(int pageNumber,  int sortBy, IEnumerable<int> feedbackFilterValues)
         {
             var feedbacks = new List<AthenaFeedbackViewDTO>();
 
             var searchParamsDTO = new SearchParametersDTO
             {
                 PageCount = pageNumber,
+                SortByFilter = sortBy,
                 Filter = this.filterQueryHelper.GetFilterCondition(nameof(AthenaFeedbackEntity.Feedback), feedbackFilterValues),
             };
 
